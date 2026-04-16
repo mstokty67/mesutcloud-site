@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mesut Cloud | Güvenlik Teknolojileri</title>
+  <title>Mesut Cloud | Güvenlik Sistemleri ve Elektronik Ürünler</title>
+  <meta name="description" content="Mesut Cloud güvenlik sistemleri, IP kamera, NVR, alarm, switch, plaka tanıma ve elektronik ürün çözümleri sunar." />
+  <meta name="keywords" content="güvenlik sistemleri, ip kamera, nvr, alarm, poe switch, plaka tanıma, cctv, istanbul" />
+  <meta name="author" content="Mesut Cloud" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Mesut Cloud | Güvenlik Sistemleri ve Elektronik Ürünler" />
+  <meta property="og:description" content="IP kamera, NVR, alarm, switch ve güvenlik çözümleri." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://cloudhan.info/" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -14,6 +24,7 @@
       line-height: 1.6;
     }
     a { text-decoration: none; }
+    img { max-width: 100%; display: block; }
     .topbar {
       background: #0f172a;
       color: #e5e7eb;
@@ -56,13 +67,17 @@
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
+      align-items: center;
     }
-    .nav-links a {
+    .nav-links a, .admin-toggle {
       color: #334155;
       font-weight: 600;
       font-size: 15px;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
-    .nav-links a:hover { color: #dc2626; }
+    .nav-links a:hover, .admin-toggle:hover { color: #dc2626; }
     .hero {
       background: linear-gradient(135deg, rgba(15,23,42,0.92), rgba(30,41,59,0.92)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80') center/cover;
       color: #fff;
@@ -98,9 +113,7 @@
       margin-bottom: 14px;
       font-size: 24px;
     }
-    .hero-list {
-      list-style: none;
-    }
+    .hero-list { list-style: none; }
     .hero-list li {
       padding: 8px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -116,11 +129,10 @@
       border-radius: 12px;
       font-weight: bold;
       transition: 0.25s ease;
+      cursor: pointer;
+      border: none;
     }
-    .btn-primary {
-      background: #dc2626;
-      color: #fff;
-    }
+    .btn-primary { background: #dc2626; color: #fff; }
     .btn-primary:hover { background: #b91c1c; }
     .btn-secondary {
       background: rgba(255,255,255,0.12);
@@ -128,9 +140,13 @@
       border: 1px solid rgba(255,255,255,0.16);
     }
     .btn-secondary:hover { background: rgba(255,255,255,0.2); }
-    .section {
-      padding: 75px 20px;
+    .btn-outline {
+      background: #fff;
+      color: #0f172a;
+      border: 1px solid #d1d5db;
     }
+    .btn-outline:hover { background: #f8fafc; }
+    .section { padding: 75px 20px; }
     .section-title {
       text-align: center;
       margin-bottom: 14px;
@@ -176,7 +192,7 @@
     .card {
       background: #fff;
       border-radius: 20px;
-      padding: 26px;
+      padding: 20px;
       box-shadow: 0 12px 35px rgba(15,23,42,0.06);
       border: 1px solid #e5e7eb;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -186,9 +202,10 @@
       box-shadow: 0 18px 38px rgba(15,23,42,0.12);
     }
     .card h3 {
-      font-size: 22px;
+      font-size: 20px;
       color: #0f172a;
-      margin-bottom: 10px;
+      margin: 10px 0 8px;
+      min-height: 48px;
     }
     .card p { color: #64748b; }
     .card .mini {
@@ -196,6 +213,41 @@
       font-weight: 700;
       margin-bottom: 12px;
       display: inline-block;
+    }
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 14px;
+      background: #e5e7eb;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 14px 0;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .price {
+      color: #dc2626;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .stock {
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: bold;
+    }
+    .stock.in { background: #dcfce7; color: #166534; }
+    .stock.low { background: #fef3c7; color: #92400e; }
+    .stock.out { background: #fee2e2; color: #991b1b; }
+    .product-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
     }
     .brands {
       display: grid;
@@ -218,26 +270,20 @@
       gap: 24px;
       align-items: center;
     }
-    .about-box, .contact-box {
+    .about-box, .contact-box, .admin-panel {
       background: #fff;
       border-radius: 20px;
       border: 1px solid #e5e7eb;
       padding: 28px;
       box-shadow: 0 12px 35px rgba(15,23,42,0.06);
     }
-    .about-box h3, .contact-box h3 {
+    .about-box h3, .contact-box h3, .admin-panel h3 {
       margin-bottom: 12px;
       color: #0f172a;
       font-size: 28px;
     }
-    .feature-list {
-      list-style: none;
-      margin-top: 14px;
-    }
-    .feature-list li {
-      margin-bottom: 10px;
-      color: #475569;
-    }
+    .feature-list { list-style: none; margin-top: 14px; }
+    .feature-list li { margin-bottom: 10px; color: #475569; }
     .news-card small {
       color: #dc2626;
       font-weight: 700;
@@ -249,9 +295,112 @@
       grid-template-columns: 1fr 1fr;
       gap: 24px;
     }
-    .contact-item {
-      margin-bottom: 12px;
-      color: #475569;
+    .contact-item { margin-bottom: 12px; color: #475569; }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .search-box, .filter-select, .admin-panel input, .admin-panel textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      outline: none;
+      font-size: 14px;
+    }
+    .search-wrap { flex: 1 1 260px; }
+    .filter-wrap { flex: 0 0 220px; }
+    .admin-wrapper {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+    }
+    .admin-wrapper.show { display: block; }
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .admin-panel textarea { min-height: 100px; resize: vertical; }
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .table-wrap { overflow-x: auto; margin-top: 20px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: #334155; }
+    .small-btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .edit-btn { background: #e0f2fe; color: #075985; }
+    .delete-btn { background: #fee2e2; color: #991b1b; }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.72);
+      z-index: 2000;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal.show { display: block; }
+    .modal-content {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    }
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .modal-image {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      background: #e5e7eb;
+    }
+    .modal-body { padding: 28px; }
+    .modal-body h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+    .modal-close {
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      border: none;
+      background: #fff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
     }
     footer {
       background: #0f172a;
@@ -295,31 +444,17 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 20px rgba(0,0,0,0.3); }
     }
     @media (max-width: 1000px) {
-      .hero-inner,
-      .about-wrap,
-      .contact-grid,
-      .grid-4,
-      .brands,
-      .stats-grid {
+      .hero-inner, .about-wrap, .contact-grid, .grid-4, .brands, .stats-grid, .modal-grid, .admin-grid {
         grid-template-columns: 1fr 1fr;
       }
       .grid-3 { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 700px) {
-      .nav-inner,
-      .hero-inner,
-      .about-wrap,
-      .contact-grid,
-      .grid-3,
-      .grid-4,
-      .brands,
-      .stats-grid {
+      .nav-inner, .hero-inner, .about-wrap, .contact-grid, .grid-3, .grid-4, .brands, .stats-grid, .modal-grid, .admin-grid {
         grid-template-columns: 1fr;
         display: grid;
       }
-      .nav-inner {
-        display: block;
-      }
+      .nav-inner { display: block; }
       .logo { margin-bottom: 12px; }
       .nav-links { gap: 12px; }
       .hero h1 { font-size: 34px; }
@@ -329,8 +464,24 @@
         right: 16px;
         padding: 12px 16px;
       }
+      .modal-image { min-height: 240px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mesut Cloud",
+    "url": "https://cloudhan.info/",
+    "email": "mesutoktay67@gmail.com",
+    "telephone": "+90 552 822 49 81",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "İstanbul",
+      "addressCountry": "TR"
+    }
+  }
+  </script>
 </head>
 <body>
   <div class="topbar">
@@ -350,6 +501,7 @@
         <a href="#markalar">Markalar</a>
         <a href="#haberler">Haberler</a>
         <a href="#iletisim">İletişim</a>
+        <button class="admin-toggle" onclick="toggleAdmin()">Ürün Paneli</button>
       </div>
     </div>
   </nav>
@@ -357,7 +509,7 @@
   <section class="hero" id="anasayfa">
     <div class="hero-inner">
       <div>
-        <h1>Profesyonel Güvenlik Sistemleri ve Teknoloji Çözümleri</h1>
+        <h1>Profesyonel Güvenlik Sistemleri ve Elektronik Ürünler</h1>
         <p>
           Kamera sistemleri, kayıt cihazları, ağ ürünleri, alarm sistemleri, plaka tanıma,
           mobil izleme ve teknik destek hizmetleri için kurumsal bir çözüm ortağı sitesi.
@@ -389,13 +541,47 @@
     </div>
   </div>
 
+  <div class="admin-wrapper" id="adminWrapper">
+    <div class="admin-panel">
+      <h3>Ürün Ekle / Düzenle</h3>
+      <div class="admin-grid">
+        <input id="pName" type="text" placeholder="Ürün adı" />
+        <input id="pCategory" type="text" placeholder="Kategori" />
+        <input id="pPrice" type="number" placeholder="Fiyat (TL)" />
+        <input id="pStock" type="number" placeholder="Stok adedi" />
+        <input id="pImage" type="text" placeholder="Resim linki" />
+        <input id="pShort" type="text" placeholder="Kısa açıklama" />
+      </div>
+      <textarea id="pDesc" placeholder="Detay açıklama"></textarea>
+      <div class="admin-actions">
+        <button class="btn btn-primary" onclick="saveProduct()">Kaydet</button>
+        <button class="btn btn-outline" onclick="resetForm()">Temizle</button>
+        <button class="btn btn-outline" onclick="resetProducts()">Varsayılan Ürünleri Yükle</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ürün</th>
+              <th>Kategori</th>
+              <th>Fiyat</th>
+              <th>Stok</th>
+              <th>İşlem</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <section class="section" id="kurumsal">
     <div class="container about-wrap">
       <div class="about-box">
         <h3>Kurumsal</h3>
         <p>
           Mesut Cloud; güvenlik teknolojileri, izleme sistemleri, kurumsal ağ altyapıları ve teknik servis alanlarında
-          çözüm sunan modern bir teknoloji firmasıdır. Bu alanı kendi firma bilgilerine göre birebir düzenleyebiliriz.
+          çözüm sunan modern bir teknoloji firmasıdır.
         </p>
         <ul class="feature-list">
           <li>✔ Kurumsal ve bayi odaklı yapı</li>
@@ -423,60 +609,18 @@
   <section class="section" id="urunler">
     <div class="container">
       <h2 class="section-title">Ürünler</h2>
-      <p class="section-sub">
-        Aşağıya istediğin kadar ürün ekleyebilirsin.
-      </p>
-      <div class="grid-4">
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>SPY 5MP IP Kamera</h3>
-          <p>Gece görüşlü, mobil izleme destekli</p>
+      <p class="section-sub">Ürün kartına tıkla, detayını gör. Fiyat ve stok bilgileri canlı görünür.</p>
+      <div class="toolbar">
+        <div class="search-wrap">
+          <input id="searchInput" class="search-box" type="text" placeholder="Ürün ara..." oninput="renderProducts()" />
         </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>8 Kanal NVR</h3>
-          <p>Uzaktan izleme destekli kayıt cihazı</p>
+        <div class="filter-wrap">
+          <select id="categoryFilter" class="filter-select" onchange="renderProducts()">
+            <option value="">Tüm Kategoriler</option>
+          </select>
         </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>16 Port POE Switch</h3>
-          <p>Kamera sistemleri için ideal çözüm</p>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>Kablosuz Alarm Seti</h3>
-          <p>Ev ve işyeri güvenliği için</p>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>Araç Kamera Sistemi</h3>
-          <p>Mobil izleme ve kayıt çözümü</p>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>Plaka Tanıma Kamera</h3>
-          <p>Otopark ve site girişleri için</p>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>Wifi Akıllı Röle</h3>
-          <p>Uzaktan kontrol edilebilir sistem</p>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/250">
-          <h3>CCTV Monitör</h3>
-          <p>7/24 çalışmaya uygun ekran</p>
-        </div>
-
       </div>
+      <div class="grid-4" id="productGrid"></div>
     </div>
   </section>
 
@@ -527,7 +671,7 @@
           Kamera sistemleri, alarm ürünleri, plaka tanıma çözümleri veya teknik servis talepleriniz için
           bize hızlıca ulaşabilirsiniz.
         </p>
-        <div style="margin-top:18px;">
+        <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
           <a href="mailto:mesutoktay67@gmail.com" class="btn btn-primary">E-posta Gönder</a>
           <a href="https://wa.me/905528224981?text=Merhaba%20bilgi%20almak%20istiyorum" class="btn" style="background:#25D366;color:#fff;">WhatsApp Yaz</a>
         </div>
@@ -539,11 +683,294 @@
     © 2026 Mesut Cloud | Tüm hakları saklıdır.
   </footer>
 
+  <div class="modal" id="productModal" onclick="closeModal(event)">
+    <button class="modal-close" onclick="closeModal(event)">×</button>
+    <div class="modal-content">
+      <div class="modal-grid">
+        <img id="modalImage" class="modal-image" src="" alt="Ürün görseli" />
+        <div class="modal-body">
+          <p id="modalCategory" class="mini"></p>
+          <h3 id="modalTitle"></h3>
+          <div class="price-row">
+            <div id="modalPrice" class="price"></div>
+            <div id="modalStock" class="stock"></div>
+          </div>
+          <p id="modalShort"></p>
+          <p id="modalDesc" style="margin-top:16px;"></p>
+          <div class="product-actions" style="margin-top:20px;">
+            <a href="https://wa.me/905528224981?text=Merhaba%20ürün%20hakkında%20bilgi%20almak%20istiyorum" class="btn" style="background:#25D366;color:#fff;">WhatsApp ile Sor</a>
+            <a href="mailto:mesutoktay67@gmail.com?subject=Ürün%20Bilgisi" class="btn btn-outline">Mail Gönder</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <a href="https://wa.me/905528224981?text=Merhaba%20bilgi%20almak%20istiyorum" class="whatsapp-btn" target="_blank" aria-label="WhatsApp ile iletişime geç">
     <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
       <path d="M19.11 17.21c-.29-.15-1.69-.83-1.95-.92-.26-.1-.45-.15-.64.15-.18.29-.74.92-.9 1.11-.17.2-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.84-.75-1.41-1.67-1.58-1.96-.17-.29-.02-.45.13-.59.13-.13.29-.33.44-.49.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.52-.08-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.2 0-.52.08-.79.37-.27.29-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.71.63.72.23 1.38.2 1.9.12.58-.09 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.08-.12-.27-.2-.56-.34zM16.27 27.2h-.01a11.07 11.07 0 0 1-5.64-1.54l-.4-.24-4.19 1.09 1.12-4.08-.26-.42a11.03 11.03 0 1 1 9.38 5.19zm9.37-20.39A13.14 13.14 0 0 0 16.32 3C9.08 3 3.2 8.88 3.2 16.12c0 2.3.6 4.54 1.74 6.51L3 29l6.58-1.92a13.1 13.1 0 0 0 6.74 1.85h.01c7.24 0 13.12-5.88 13.12-13.12 0-3.5-1.36-6.79-3.81-9.24z"/>
     </svg>
     <span>WhatsApp'tan Yaz</span>
   </a>
+
+  <script>
+    const defaultProducts = [
+      {
+        id: 1,
+        name: 'SPY 5MP IP Kamera',
+        category: 'Kamera',
+        price: 2450,
+        stock: 12,
+        image: 'https://via.placeholder.com/600x400?text=SPY+5MP+IP+Kamera',
+        short: 'Gece görüşlü, mobil izleme destekli profesyonel IP kamera.',
+        desc: 'SPY 5MP IP Kamera; yüksek çözünürlük, gece görüş desteği, uzaktan izleme ve dış ortam kullanımına uygun sağlam kasa yapısı ile öne çıkar.'
+      },
+      {
+        id: 2,
+        name: '8 Kanal NVR',
+        category: 'Kayıt Cihazı',
+        price: 3890,
+        stock: 8,
+        image: 'https://via.placeholder.com/600x400?text=8+Kanal+NVR',
+        short: 'Uzaktan izleme destekli kayıt cihazı.',
+        desc: '8 kanal desteği, mobil uygulama erişimi ve yüksek kapasiteli disk uyumluluğu ile işletmeler ve evler için ideal kayıt çözümüdür.'
+      },
+      {
+        id: 3,
+        name: '16 Port POE Switch',
+        category: 'Network',
+        price: 4290,
+        stock: 5,
+        image: 'https://via.placeholder.com/600x400?text=16+Port+POE+Switch',
+        short: 'Kamera sistemleri için ideal ağ çözümü.',
+        desc: '16 port POE desteği sayesinde IP kamera ve ağ cihazlarını tek kablo ile besleyerek kurulum kolaylığı sağlar.'
+      },
+      {
+        id: 4,
+        name: 'Kablosuz Alarm Seti',
+        category: 'Alarm',
+        price: 3150,
+        stock: 0,
+        image: 'https://via.placeholder.com/600x400?text=Kablosuz+Alarm+Seti',
+        short: 'Ev ve işyeri güvenliği için kablosuz set.',
+        desc: 'Kablosuz sensörler, siren ve mobil bildirim desteği ile pratik ve hızlı güvenlik kurulumu sunar.'
+      },
+      {
+        id: 5,
+        name: 'Araç Kamera Sistemi',
+        category: 'Mobil İzleme',
+        price: 5690,
+        stock: 4,
+        image: 'https://via.placeholder.com/600x400?text=Arac+Kamera+Sistemi',
+        short: 'Mobil izleme ve kayıt çözümü.',
+        desc: 'Araçlar için geliştirilmiş kamera ve kayıt sistemi; canlı izleme, geçmiş kayıt ve saha güvenliği için uygundur.'
+      },
+      {
+        id: 6,
+        name: 'Plaka Tanıma Kamera',
+        category: 'Plaka Tanıma',
+        price: 8990,
+        stock: 3,
+        image: 'https://via.placeholder.com/600x400?text=Plaka+Tanitma+Kamera',
+        short: 'Otopark ve giriş çıkış kontrolü için.',
+        desc: 'Yüksek hızlı araç geçişlerinde plaka algılama ve kayıt özellikleri ile site, otopark ve tesis girişleri için uygundur.'
+      },
+      {
+        id: 7,
+        name: 'Wifi Akıllı Röle',
+        category: 'Akıllı Sistem',
+        price: 990,
+        stock: 14,
+        image: 'https://via.placeholder.com/600x400?text=Wifi+Akilli+Role',
+        short: 'Uzaktan kontrol edilebilir akıllı sistem.',
+        desc: 'Mobil uygulama ile kontrol edilebilen röle çözümü; otomasyon, uzaktan açma kapama ve planlama özellikleri sunar.'
+      },
+      {
+        id: 8,
+        name: 'CCTV Monitör',
+        category: 'Aksesuar',
+        price: 2750,
+        stock: 7,
+        image: 'https://via.placeholder.com/600x400?text=CCTV+Monitor',
+        short: '7/24 çalışmaya uygun izleme ekranı.',
+        desc: 'Kesintisiz izleme için tasarlanmış CCTV monitör; güvenlik merkezleri ve teknik izleme odalarında kullanım için uygundur.'
+      }
+    ];
+
+    let editId = null;
+
+    function getProducts() {
+      const data = localStorage.getItem('mesutcloud_products');
+      return data ? JSON.parse(data) : defaultProducts;
+    }
+
+    function setProducts(products) {
+      localStorage.setItem('mesutcloud_products', JSON.stringify(products));
+    }
+
+    function stockClass(stock) {
+      if (stock <= 0) return 'out';
+      if (stock <= 5) return 'low';
+      return 'in';
+    }
+
+    function stockText(stock) {
+      if (stock <= 0) return 'Stokta Yok';
+      if (stock <= 5) return 'Son ' + stock + ' Ürün';
+      return 'Stokta Var';
+    }
+
+    function formatPrice(price) {
+      return Number(price).toLocaleString('tr-TR') + ' TL';
+    }
+
+    function renderFilters(products) {
+      const filter = document.getElementById('categoryFilter');
+      const current = filter.value;
+      const categories = [...new Set(products.map(p => p.category).filter(Boolean))].sort();
+      filter.innerHTML = '<option value="">Tüm Kategoriler</option>' + categories.map(c => `<option value="${c}">${c}</option>`).join('');
+      filter.value = current;
+    }
+
+    function renderProducts() {
+      const products = getProducts();
+      renderFilters(products);
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+      const category = document.getElementById('categoryFilter').value;
+      const filtered = products.filter(p => {
+        const matchesSearch = !search || p.name.toLowerCase().includes(search) || p.short.toLowerCase().includes(search) || p.category.toLowerCase().includes(search);
+        const matchesCategory = !category || p.category === category;
+        return matchesSearch && matchesCategory;
+      });
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = filtered.map(p => `
+        <div class="card">
+          <img class="product-image" src="${p.image}" alt="${p.name}">
+          <span class="mini">${p.category}</span>
+          <h3>${p.name}</h3>
+          <p>${p.short}</p>
+          <div class="price-row">
+            <div class="price">${formatPrice(p.price)}</div>
+            <div class="stock ${stockClass(p.stock)}">${stockText(p.stock)}</div>
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-primary" onclick="openProduct(${p.id})">Detayı Gör</button>
+            <a class="btn btn-outline" href="https://wa.me/905528224981?text=${encodeURIComponent(p.name + ' hakkında bilgi almak istiyorum')}" target="_blank">Sor</a>
+          </div>
+        </div>
+      `).join('');
+      renderAdminTable();
+    }
+
+    function openProduct(id) {
+      const product = getProducts().find(p => p.id === id);
+      if (!product) return;
+      document.getElementById('modalImage').src = product.image;
+      document.getElementById('modalImage').alt = product.name;
+      document.getElementById('modalCategory').textContent = product.category;
+      document.getElementById('modalTitle').textContent = product.name;
+      document.getElementById('modalPrice').textContent = formatPrice(product.price);
+      const stockEl = document.getElementById('modalStock');
+      stockEl.textContent = stockText(product.stock);
+      stockEl.className = 'stock ' + stockClass(product.stock);
+      document.getElementById('modalShort').textContent = product.short;
+      document.getElementById('modalDesc').textContent = product.desc;
+      document.getElementById('productModal').classList.add('show');
+    }
+
+    function closeModal(event) {
+      if (event.target.id === 'productModal' || event.target.classList.contains('modal-close')) {
+        document.getElementById('productModal').classList.remove('show');
+      }
+    }
+
+    function toggleAdmin() {
+      document.getElementById('adminWrapper').classList.toggle('show');
+      window.scrollTo({ top: document.getElementById('adminWrapper').offsetTop - 90, behavior: 'smooth' });
+    }
+
+    function resetForm() {
+      editId = null;
+      ['pName','pCategory','pPrice','pStock','pImage','pShort','pDesc'].forEach(id => document.getElementById(id).value = '');
+    }
+
+    function saveProduct() {
+      const name = document.getElementById('pName').value.trim();
+      const category = document.getElementById('pCategory').value.trim();
+      const price = document.getElementById('pPrice').value;
+      const stock = document.getElementById('pStock').value;
+      const image = document.getElementById('pImage').value.trim() || 'https://via.placeholder.com/600x400?text=Urun';
+      const short = document.getElementById('pShort').value.trim();
+      const desc = document.getElementById('pDesc').value.trim();
+
+      if (!name || !category || price === '' || stock === '' || !short || !desc) {
+        alert('Lütfen tüm alanları doldur.');
+        return;
+      }
+
+      const products = getProducts();
+
+      if (editId) {
+        const index = products.findIndex(p => p.id === editId);
+        products[index] = { id: editId, name, category, price: Number(price), stock: Number(stock), image, short, desc };
+      } else {
+        const newId = products.length ? Math.max(...products.map(p => p.id)) + 1 : 1;
+        products.push({ id: newId, name, category, price: Number(price), stock: Number(stock), image, short, desc });
+      }
+
+      setProducts(products);
+      resetForm();
+      renderProducts();
+    }
+
+    function editProduct(id) {
+      const product = getProducts().find(p => p.id === id);
+      if (!product) return;
+      editId = id;
+      document.getElementById('pName').value = product.name;
+      document.getElementById('pCategory').value = product.category;
+      document.getElementById('pPrice').value = product.price;
+      document.getElementById('pStock').value = product.stock;
+      document.getElementById('pImage').value = product.image;
+      document.getElementById('pShort').value = product.short;
+      document.getElementById('pDesc').value = product.desc;
+      document.getElementById('adminWrapper').classList.add('show');
+      window.scrollTo({ top: document.getElementById('adminWrapper').offsetTop - 90, behavior: 'smooth' });
+    }
+
+    function deleteProduct(id) {
+      const ok = confirm('Bu ürünü silmek istiyor musun?');
+      if (!ok) return;
+      const products = getProducts().filter(p => p.id !== id);
+      setProducts(products);
+      renderProducts();
+    }
+
+    function renderAdminTable() {
+      const tbody = document.getElementById('adminTableBody');
+      tbody.innerHTML = getProducts().map(p => `
+        <tr>
+          <td>${p.name}</td>
+          <td>${p.category}</td>
+          <td>${formatPrice(p.price)}</td>
+          <td>${p.stock}</td>
+          <td>
+            <button class="small-btn edit-btn" onclick="editProduct(${p.id})">Düzenle</button>
+            <button class="small-btn delete-btn" onclick="deleteProduct(${p.id})">Sil</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function resetProducts() {
+      const ok = confirm('Varsayılan ürünleri geri yüklemek istiyor musun?');
+      if (!ok) return;
+      localStorage.removeItem('mesutcloud_products');
+      resetForm();
+      renderProducts();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderProducts);
+  </script>
 </body>
 </html>
