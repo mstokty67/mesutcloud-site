@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesut Cloud | Web Hizmetleri</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: rgba(15, 23, 42, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 15px;
+    }
+    .nav-links a:hover { color: #38bdf8; }
+    .hero {
+      padding: 90px 20px 70px;
+      text-align: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+    }
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 18px;
+    }
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      color: #cbd5e1;
+      font-size: 18px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      background: #38bdf8;
+      color: #0f172a;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      margin: 8px;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #7dd3fc; }
+    .btn-outline {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .section-sub {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 35px;
+      color: #cbd5e1;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+    }
+    .card h3 {
+      color: #38bdf8;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+    .about-box, .contact-box {
+      max-width: 850px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 30px;
+      border-radius: 18px;
+      color: #cbd5e1;
+    }
+    .contact-box p { margin-bottom: 10px; }
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #0b1220;
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .nav-links a {
+        margin: 0 8px;
+      }
+      .hero h1 {
+        font-size: 34px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Mesut Cloud</div>
+    <div class="nav-links">
+      <a href="#anasayfa">Ana Sayfa</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="anasayfa">
+    <h1>Ücretsiz ve Profesyonel Web Sitesi</h1>
+    <p>
+      İşinizi, hizmetlerinizi veya kişisel markanızı internet ortamında güçlü şekilde gösterebileceğiniz,
+      modern tasarıma sahip örnek bir web sitesi.
+    </p>
+    <a href="#iletisim" class="btn">İletişime Geç</a>
+    <a href="#hizmetler" class="btn btn-outline">Hizmetleri Gör</a>
+  </section>
+
+  <section class="section" id="hakkimizda">
+    <h2>Hakkımızda</h2>
+    <p class="section-sub">
+      Güvenilir, hızlı ve mobil uyumlu web çözümleri sunan modern bir tanıtım sayfası örneği.
+    </p>
+    <div class="about-box">
+      Buraya kendi açıklamanı ekleyebilirsin. Örneğin firmanın ne iş yaptığı, hangi hizmetleri sunduğu,
+      müşterilerine nasıl yardımcı olduğu ve neden tercih edilmesi gerektiği gibi bilgileri bu alanda yayınlayabilirsin.
+      Bu yapı; şirket sitesi, kişisel portföy, teknik servis sayfası veya araç takip tanıtım sitesi olarak kullanılabilir.
+    </div>
+  </section>
+
+  <section class="section" id="hizmetler">
+    <h2>Hizmetler</h2>
+    <p class="section-sub">
+      Sitenin içeriğini ihtiyacına göre tamamen değiştirebiliriz.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <h3>Web Tasarım</h3>
+        <p>Kurumsal ve kişisel kullanıma uygun, sade ve şık web sayfaları hazırlanır.</p>
+      </div>
+      <div class="card">
+        <h3>Mobil Uyum</h3>
+        <p>Site; telefon, tablet ve bilgisayarda düzgün görünmesi için responsive yapıda hazırlanır.</p>
+      </div>
+      <div class="card">
+        <h3>Yayınlama Desteği</h3>
+        <p>GitHub Pages, Netlify veya Cloudflare Pages ile ücretsiz yayınlama için uygun yapı sunar.</p>
+      </div>
+      <div class="card">
+        <h3>İletişim Alanı</h3>
+        <p>Telefon, e-posta, adres ve WhatsApp bağlantıları eklenebilir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="iletisim">
+    <h2>İletişim</h2>
+    <p class="section-sub">
+      Aşağıdaki alanları kendi bilgilerine göre düzenleyebilirsin.
+    </p>
+    <div class="contact-box">
+      <p><strong>Ad Soyad / Firma:</strong> Mesut Cloud</p>
+      <p><strong>Telefon:</strong> 05xx xxx xx xx</p>
+      <p><strong>E-posta:</strong> ornek@site.com</p>
+      <p><strong>Konum:</strong> İstanbul / Türkiye</p>
+      <p><strong>WhatsApp:</strong> wa.me/905xxxxxxxxx</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Mesut Cloud - Tüm hakları saklıdır.
+  </footer>
+</body>
+</html>
