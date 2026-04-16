@@ -3,145 +3,270 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mesut Cloud | Web Hizmetleri</title>
+  <title>Mesut Cloud | Güvenlik Teknolojileri</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #ffffff;
+      background: #f5f7fb;
+      color: #1f2937;
       line-height: 1.6;
     }
-    .navbar {
+    a { text-decoration: none; }
+    .topbar {
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+    .topbar-inner, .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .topbar-inner {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px;
-      background: rgba(15, 23, 42, 0.95);
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
     .logo {
-      font-size: 22px;
+      font-size: 28px;
       font-weight: bold;
-      color: #38bdf8;
+      color: #0f172a;
+    }
+    .logo span { color: #dc2626; }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
     }
     .nav-links a {
-      color: #cbd5e1;
-      text-decoration: none;
-      margin-left: 18px;
+      color: #334155;
+      font-weight: 600;
       font-size: 15px;
     }
-    .nav-links a:hover { color: #38bdf8; }
+    .nav-links a:hover { color: #dc2626; }
     .hero {
-      padding: 90px 20px 70px;
-      text-align: center;
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      background: linear-gradient(135deg, rgba(15,23,42,0.92), rgba(30,41,59,0.92)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: #fff;
+      padding: 100px 20px 90px;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
     }
     .hero h1 {
-      font-size: 46px;
+      font-size: 48px;
+      line-height: 1.15;
       margin-bottom: 18px;
     }
     .hero p {
-      max-width: 760px;
-      margin: 0 auto 28px;
-      color: #cbd5e1;
+      color: #e5e7eb;
       font-size: 18px;
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+    .hero-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 22px;
+      padding: 28px;
+      backdrop-filter: blur(6px);
+    }
+    .hero-box h3 {
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+    .hero-list {
+      list-style: none;
+    }
+    .hero-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .btn {
       display: inline-block;
-      padding: 13px 24px;
-      background: #38bdf8;
-      color: #0f172a;
-      text-decoration: none;
+      padding: 14px 24px;
       border-radius: 12px;
       font-weight: bold;
-      margin: 8px;
-      transition: 0.3s;
+      transition: 0.25s ease;
     }
-    .btn:hover { background: #7dd3fc; }
-    .btn-outline {
-      background: transparent;
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.2);
+    .btn-primary {
+      background: #dc2626;
+      color: #fff;
     }
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.08);
+    .btn-primary:hover { background: #b91c1c; }
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.16);
     }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
     .section {
-      max-width: 1150px;
-      margin: auto;
-      padding: 70px 20px;
+      padding: 75px 20px;
     }
-    .section h2 {
-      font-size: 32px;
-      margin-bottom: 14px;
+    .section-title {
       text-align: center;
+      margin-bottom: 14px;
+      font-size: 36px;
+      color: #0f172a;
     }
     .section-sub {
-      text-align: center;
       max-width: 760px;
-      margin: 0 auto 35px;
-      color: #cbd5e1;
+      margin: 0 auto 38px;
+      text-align: center;
+      color: #64748b;
     }
-    .cards {
+    .stats {
+      max-width: 1200px;
+      margin: -36px auto 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 5;
+    }
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 35px rgba(15,23,42,0.08);
+      text-align: center;
+    }
+    .stat-card h3 {
+      font-size: 30px;
+      color: #dc2626;
+      margin-bottom: 6px;
+    }
+    .grid-3, .grid-4 {
+      display: grid;
       gap: 22px;
     }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
     .card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
+      background: #fff;
+      border-radius: 20px;
       padding: 26px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+      box-shadow: 0 12px 35px rgba(15,23,42,0.06);
+      border: 1px solid #e5e7eb;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgba(15,23,42,0.12);
     }
     .card h3 {
-      color: #38bdf8;
-      margin-bottom: 10px;
       font-size: 22px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .card p { color: #64748b; }
+    .card .mini {
+      color: #dc2626;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .brands {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .brand {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      font-weight: bold;
+      color: #334155;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.05);
+    }
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
     }
     .about-box, .contact-box {
-      max-width: 850px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 30px;
-      border-radius: 18px;
-      color: #cbd5e1;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      padding: 28px;
+      box-shadow: 0 12px 35px rgba(15,23,42,0.06);
     }
-    .contact-box p { margin-bottom: 10px; }
+    .about-box h3, .contact-box h3 {
+      margin-bottom: 12px;
+      color: #0f172a;
+      font-size: 28px;
+    }
+    .feature-list {
+      list-style: none;
+      margin-top: 14px;
+    }
+    .feature-list li {
+      margin-bottom: 10px;
+      color: #475569;
+    }
+    .news-card small {
+      color: #dc2626;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .contact-item {
+      margin-bottom: 12px;
+      color: #475569;
+    }
     footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 26px 20px;
       text-align: center;
-      padding: 28px 20px;
-      color: #94a3b8;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      background: #0b1220;
+      margin-top: 30px;
     }
-    @media (max-width: 700px) {
-      .navbar {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .nav-links a {
-        margin: 0 8px;
-      }
-      .hero h1 {
-        font-size: 34px;
-      }
-      .hero p {
-        font-size: 16px;
-      }
-    }
-  </style>
-  <style>
     .whatsapp-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       background: #25D366;
       color: white;
       padding: 14px 18px;
@@ -150,89 +275,234 @@
       font-weight: bold;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       z-index: 999;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      animation: whatsappPulse 1.8s infinite;
     }
     .whatsapp-btn:hover {
       background: #1ebe5d;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.35);
+    }
+    .whatsapp-icon {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    @keyframes whatsappPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45), 0 8px 20px rgba(0,0,0,0.3); }
+      70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0), 0 8px 20px rgba(0,0,0,0.3); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 20px rgba(0,0,0,0.3); }
+    }
+    @media (max-width: 1000px) {
+      .hero-inner,
+      .about-wrap,
+      .contact-grid,
+      .grid-4,
+      .brands,
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .nav-inner,
+      .hero-inner,
+      .about-wrap,
+      .contact-grid,
+      .grid-3,
+      .grid-4,
+      .brands,
+      .stats-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+      .nav-inner {
+        display: block;
+      }
+      .logo { margin-bottom: 12px; }
+      .nav-links { gap: 12px; }
+      .hero h1 { font-size: 34px; }
+      .hero p { font-size: 16px; }
+      .whatsapp-btn {
+        bottom: 16px;
+        right: 16px;
+        padding: 12px 16px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div>Türkiye Geneli Güvenlik ve Teknoloji Çözümleri</div>
+      <div>Telefon: 444 1 426 | E-posta: info@mesutcloud.com</div>
+    </div>
+  </div>
+
   <nav class="navbar">
-    <div class="logo">Mesut Cloud</div>
-    <div class="nav-links">
-      <a href="#anasayfa">Ana Sayfa</a>
-      <a href="#hakkimizda">Hakkımızda</a>
-      <a href="#hizmetler">Hizmetler</a>
-      <a href="#iletisim">İletişim</a>
+    <div class="nav-inner">
+      <div class="logo">Mesut <span>Cloud</span></div>
+      <div class="nav-links">
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#kurumsal">Kurumsal</a>
+        <a href="#urunler">Ürünler</a>
+        <a href="#markalar">Markalar</a>
+        <a href="#haberler">Haberler</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
     </div>
   </nav>
 
   <section class="hero" id="anasayfa">
-    <h1>Ücretsiz ve Profesyonel Web Sitesi</h1>
-    <p>
-      İşinizi, hizmetlerinizi veya kişisel markanızı internet ortamında güçlü şekilde gösterebileceğiniz,
-      modern tasarıma sahip örnek bir web sitesi.
-    </p>
-    <a href="#iletisim" class="btn">İletişime Geç</a>
-    <a href="#hizmetler" class="btn btn-outline">Hizmetleri Gör</a>
-  </section>
-
-  <section class="section" id="hakkimizda">
-    <h2>Hakkımızda</h2>
-    <p class="section-sub">
-      Güvenilir, hızlı ve mobil uyumlu web çözümleri sunan modern bir tanıtım sayfası örneği.
-    </p>
-    <div class="about-box">
-      Buraya kendi açıklamanı ekleyebilirsin. Örneğin firmanın ne iş yaptığı, hangi hizmetleri sunduğu,
-      müşterilerine nasıl yardımcı olduğu ve neden tercih edilmesi gerektiği gibi bilgileri bu alanda yayınlayabilirsin.
-      Bu yapı; şirket sitesi, kişisel portföy, teknik servis sayfası veya araç takip tanıtım sitesi olarak kullanılabilir.
-    </div>
-  </section>
-
-  <section class="section" id="hizmetler">
-    <h2>Hizmetler</h2>
-    <p class="section-sub">
-      Sitenin içeriğini ihtiyacına göre tamamen değiştirebiliriz.
-    </p>
-    <div class="cards">
-      <div class="card">
-        <h3>Web Tasarım</h3>
-        <p>Kurumsal ve kişisel kullanıma uygun, sade ve şık web sayfaları hazırlanır.</p>
+    <div class="hero-inner">
+      <div>
+        <h1>Profesyonel Güvenlik Sistemleri ve Teknoloji Çözümleri</h1>
+        <p>
+          Kamera sistemleri, kayıt cihazları, ağ ürünleri, alarm sistemleri, plaka tanıma,
+          mobil izleme ve teknik destek hizmetleri için kurumsal bir çözüm ortağı sitesi.
+        </p>
+        <div class="btns">
+          <a href="#urunler" class="btn btn-primary">Ürünleri İncele</a>
+          <a href="#iletisim" class="btn btn-secondary">Teklif Al</a>
+        </div>
       </div>
-      <div class="card">
-        <h3>Mobil Uyum</h3>
-        <p>Site; telefon, tablet ve bilgisayarda düzgün görünmesi için responsive yapıda hazırlanır.</p>
-      </div>
-      <div class="card">
-        <h3>Yayınlama Desteği</h3>
-        <p>GitHub Pages, Netlify veya Cloudflare Pages ile ücretsiz yayınlama için uygun yapı sunar.</p>
-      </div>
-      <div class="card">
-        <h3>İletişim Alanı</h3>
-        <p>Telefon, e-posta, adres ve WhatsApp bağlantıları eklenebilir.</p>
+      <div class="hero-box">
+        <h3>Öne Çıkan Kategoriler</h3>
+        <ul class="hero-list">
+          <li>IP Kamera Sistemleri</li>
+          <li>NVR / DVR Kayıt Cihazları</li>
+          <li>POE ve Endüstriyel Switchler</li>
+          <li>Alarm ve Yangın İhbar Sistemleri</li>
+          <li>Plaka Tanıma ve Mobil Sistemler</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="section" id="iletisim">
-    <h2>İletişim</h2>
-    <p class="section-sub">
-      Aşağıdaki alanları kendi bilgilerine göre düzenleyebilirsin.
-    </p>
-    <div class="contact-box">
-      <p><strong>Ad Soyad / Firma:</strong> Mesut Cloud</p>
-      <p><strong>Telefon:</strong> 05528224981</p>
-      <p><strong>E-posta:</strong> mesutoktay67@gmail.com</p>
-      <p><strong>Konum:</strong> İstanbul / Türkiye</p>
-      <p><strong>WhatsApp:</strong> wa.me/905528224981</p>
+  <div class="stats">
+    <div class="stats-grid">
+      <div class="stat-card"><h3>20+</h3><p>Ürün Kategorisi</p></div>
+      <div class="stat-card"><h3>1000+</h3><p>Ürün Çeşidi</p></div>
+      <div class="stat-card"><h3>81</h3><p>İle Hizmet</p></div>
+      <div class="stat-card"><h3>7/24</h3><p>Teknik Destek</p></div>
+    </div>
+  </div>
+
+  <section class="section" id="kurumsal">
+    <div class="container about-wrap">
+      <div class="about-box">
+        <h3>Kurumsal</h3>
+        <p>
+          Mesut Cloud; güvenlik teknolojileri, izleme sistemleri, kurumsal ağ altyapıları ve teknik servis alanlarında
+          çözüm sunan modern bir teknoloji firmasıdır. Bu alanı kendi firma bilgilerine göre birebir düzenleyebiliriz.
+        </p>
+        <ul class="feature-list">
+          <li>✔ Kurumsal ve bayi odaklı yapı</li>
+          <li>✔ Proje bazlı keşif ve teklif desteği</li>
+          <li>✔ Satış sonrası teknik destek</li>
+          <li>✔ Türkiye geneli sevkiyat ve kurulum desteği</li>
+        </ul>
+      </div>
+      <div class="about-box">
+        <h3>Neden Biz?</h3>
+        <p>
+          Modern ürün portföyü, hızlı destek yapısı ve sahaya uygun çözüm yaklaşımı ile güvenlik sektöründeki
+          ihtiyaçlara profesyonel cevap veriyoruz.
+        </p>
+        <ul class="feature-list">
+          <li>✔ Güçlü ürün çeşitliliği</li>
+          <li>✔ Kurumsal görünüm ve güven veren yapı</li>
+          <li>✔ Bayi ve proje partnerlerine özel çözümler</li>
+          <li>✔ Web, teknik destek ve iletişim entegrasyonu</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="urunler">
+    <div class="container">
+      <h2 class="section-title">Ürün Grupları</h2>
+      <p class="section-sub">
+        Güvenlik ve elektronik sektörüne uygun geniş ürün gruplarını öne çıkaran kurumsal yapı.
+      </p>
+      <div class="grid-4">
+        <div class="card"><span class="mini">Kamera Sistemleri</span><h3>IP ve Analog Kameralar</h3><p>İç mekan, dış mekan, termal ve mobil kamera çözümleri.</p></div>
+        <div class="card"><span class="mini">Kayıt Çözümleri</span><h3>NVR / DVR Kayıt Cihazları</h3><p>Yüksek kapasiteli, uzaktan izlemeye uygun kayıt sistemleri.</p></div>
+        <div class="card"><span class="mini">Network</span><h3>Switch ve Ağ Ürünleri</h3><p>POE switch, yönetilebilir switch ve endüstriyel ağ altyapısı.</p></div>
+        <div class="card"><span class="mini">Alarm</span><h3>Alarm ve Yangın Sistemleri</h3><p>Kablolu, kablosuz ve adresli güvenlik çözümleri.</p></div>
+        <div class="card"><span class="mini">Akıllı Sistemler</span><h3>Wifi IoT Ürünleri</h3><p>Akıllı röle, sensör, zil ve bağlantılı cihaz çözümleri.</p></div>
+        <div class="card"><span class="mini">Mobil İzleme</span><h3>Mobil Sistemler</h3><p>Araç kamerası, mobil kayıt ve saha izleme çözümleri.</p></div>
+        <div class="card"><span class="mini">Geçiş Kontrol</span><h3>Plaka Tanıma</h3><p>Kurumsal tesisler ve otoparklar için otomatik tanıma sistemleri.</p></div>
+        <div class="card"><span class="mini">Aksesuar</span><h3>CCTV Aksesuarları</h3><p>Monitör, bağlantı ekipmanları ve montaj aksesuarları.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="markalar" style="background:#eef2f7;">
+    <div class="container">
+      <h2 class="section-title">Markalar</h2>
+      <p class="section-sub">Buraya kendi markalarını veya satışını yaptığın markaları ekleyebiliriz.</p>
+      <div class="brands">
+        <div class="brand">SPY</div>
+        <div class="brand">UNIWIZ</div>
+        <div class="brand">MILESIGHT</div>
+        <div class="brand">PANASONIC</div>
+        <div class="brand">AXXON</div>
+        <div class="brand">SPY IP</div>
+        <div class="brand">SPY AHD</div>
+        <div class="brand">FOREDGE</div>
+        <div class="brand">SHELLY</div>
+        <div class="brand">OEM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="haberler">
+    <div class="container">
+      <h2 class="section-title">Haberler ve Duyurular</h2>
+      <p class="section-sub">Kurumsal haber, ürün duyurusu ve teknik içerik alanı.</p>
+      <div class="grid-3">
+        <div class="card news-card"><small>DUYURU</small><h3>Yeni Ürün Serileri Yayında</h3><p>Yeni nesil IP kamera ve kayıt cihazı serilerimizi inceleyin.</p></div>
+        <div class="card news-card"><small>HABER</small><h3>Proje ve Bayi Çözümleri</h3><p>Bayi ağımıza özel kampanya ve proje destek modellerimizi keşfedin.</p></div>
+        <div class="card news-card"><small>TEKNİK</small><h3>Uzaktan İzleme Rehberi</h3><p>Mobil uygulama, bulut erişim ve uzak izleme altyapıları hakkında bilgiler.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="iletisim" style="background:#eef2f7;">
+    <div class="container contact-grid">
+      <div class="contact-box">
+        <h3>İletişim Bilgileri</h3>
+        <div class="contact-item"><strong>Firma:</strong> Mesut Cloud</div>
+        <div class="contact-item"><strong>Telefon:</strong> 0552 822 49 81</div>
+        <div class="contact-item"><strong>E-posta:</strong> mesutoktay67@gmail.com</div>
+        <div class="contact-item"><strong>Adres:</strong> İstanbul / Türkiye</div>
+        <div class="contact-item"><strong>WhatsApp:</strong> wa.me/905528224981</div>
+      </div>
+      <div class="contact-box">
+        <h3>Teklif ve Destek</h3>
+        <p>
+          Kamera sistemleri, alarm ürünleri, plaka tanıma çözümleri veya teknik servis talepleriniz için
+          bize hızlıca ulaşabilirsiniz.
+        </p>
+        <div style="margin-top:18px;">
+          <a href="mailto:info@mesutcloud.com" class="btn btn-primary">E-posta Gönder</a>
+          <a href="https://wa.me/905528224981?text=Merhaba%20bilgi%20almak%20istiyorum" class="btn" style="background:#25D366;color:#fff;">WhatsApp Yaz</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
-    © 2026 Mesut Cloud - Tüm hakları saklıdır.
+    © 2026 Mesut Cloud | Tüm hakları saklıdır.
   </footer>
-  <a href="https://wa.me/905528224981?text=Merhaba%20bilgi%20almak%20istiyorum" class="whatsapp-btn" target="_blank">
-    WhatsApp
+
+  <a href="https://wa.me/905xxxxxxxxx?text=Merhaba%20bilgi%20almak%20istiyorum" class="whatsapp-btn" target="_blank" aria-label="WhatsApp ile iletişime geç">
+    <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.21c-.29-.15-1.69-.83-1.95-.92-.26-.1-.45-.15-.64.15-.18.29-.74.92-.9 1.11-.17.2-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.84-.75-1.41-1.67-1.58-1.96-.17-.29-.02-.45.13-.59.13-.13.29-.33.44-.49.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.52-.08-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.2 0-.52.08-.79.37-.27.29-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.71.63.72.23 1.38.2 1.9.12.58-.09 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.08-.12-.27-.2-.56-.34zM16.27 27.2h-.01a11.07 11.07 0 0 1-5.64-1.54l-.4-.24-4.19 1.09 1.12-4.08-.26-.42a11.03 11.03 0 1 1 9.38 5.19zm9.37-20.39A13.14 13.14 0 0 0 16.32 3C9.08 3 3.2 8.88 3.2 16.12c0 2.3.6 4.54 1.74 6.51L3 29l6.58-1.92a13.1 13.1 0 0 0 6.74 1.85h.01c7.24 0 13.12-5.88 13.12-13.12 0-3.5-1.36-6.79-3.81-9.24z"/>
+    </svg>
+    <span>WhatsApp'tan Yaz</span>
   </a>
 </body>
 </html>
